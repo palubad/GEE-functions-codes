@@ -1,4 +1,4 @@
-# Google Earth Engine functions & codes  ## repository under construction - new codes will be added soon
+# Google Earth Engine functions & codes <sub>[under construction - new codes will be added soon]<sub>
 This repository contains Google Earth Engine (GEE) codes and functions that I have created in the course of my work in GEE and which I find useful for the wider GEE community.
 
 ## makeMosaicsFromOverlappingTiles(collection,ROI) function
