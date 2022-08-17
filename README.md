@@ -18,7 +18,7 @@ Take a look at the example code [here](https://code.earthengine.google.com/eeed2
 The source code of the function can be found in the *javascript_codes* folder of this repository.
 
 <br/>
-<br/>
+
 ## bandsToImgCollection(image) function
 This function creates an ee.ImageCollection from bands of a selected image.
   
