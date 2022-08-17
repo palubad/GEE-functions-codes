@@ -4,7 +4,7 @@ This repository contains Google Earth Engine (GEE) codes and functions that I ha
 ## makeMosaicsFromOverlappingTiles(collection,ROI) function
 This function creates mosaic images from GEE ImageCollection image tiles that overlaps the selected region of interest (ROI) and originates from the same overpass.
 
-</b> Input parameters:
+Input parameters:
   - collection: *ImageCollection to use. It is recommended to filter this collection at least by Date.*
   - ROI: *the geometry for which you want to create mosaics.*
 
