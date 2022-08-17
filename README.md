@@ -17,8 +17,8 @@ This function creates mosaic images from GEE ImageCollection image tiles that ov
 Take a look at the example code [here](https://code.earthengine.google.com/eeed2f691e03f7447367777e76b0e847).
 The source code of the function can be found in the *javascript_codes* folder of this repository.
 
-</b>
-</b>
+<br/>
+<br/>
 ## bandsToImgCollection(image) function
 This function creates an ee.ImageCollection from bands of a selected image.
   
