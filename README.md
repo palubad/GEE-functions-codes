@@ -1,4 +1,4 @@
-# Google Earth Engine functions & codes <sub>[under construction - new codes will be added soon]<sub>
+# Google Earth Engine functions & codes <sub>[under construction - new codes will be added soon]</sub>
 This repository contains Google Earth Engine (GEE) codes and functions that I have created in the course of my work in GEE and which I find useful for the wider GEE community.
 
 ## makeMosaicsFromOverlappingTiles(collection,ROI) function
@@ -22,7 +22,7 @@ The source code of the function can be found in the *javascript_codes* folder of
 ## bandsToImgCollection(image) function
 This function creates an ee.ImageCollection from bands of a selected image.
   
-</b> Input parameters:
+Input parameters:
   - image: selected image to convert its band to an Image Collection
 
 #### How to use this function?
