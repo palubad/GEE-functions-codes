@@ -23,7 +23,7 @@ The source code of the function can be found in the *javascript_codes* folder of
 This function creates an ee.ImageCollection from bands of a selected image.
   
 Input parameters:
-  - image: selected image to convert its band to an Image Collection
+  - image: *selected image to convert its band to an Image Collection*
 
 #### How to use this function?
 1. Define the Image from which bands you want create an Image Collection
