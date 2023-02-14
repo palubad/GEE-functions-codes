@@ -10,13 +10,17 @@ Input parameters:
   - geometry: *the geometry for which the DEM mosaic will be created.*
 
 #### How to use this function?
-1. Define the Sentinel-1 Image Collection you want to use, define the ROI and filter the selected Image Collection by date and ROI.
-2. Load the GEE repository using `require('users/danielp/functions:makeMosaicsFromOverlappingTiles_function')`, e.g. `var theFunction = require('users/danielp/functions:makeMosaicsFromOverlappingTiles_function')`
-3. Add input parameters (collection and ROI) and use the function, e.g. `var finalCollection = theFunction.makeMosaicsFromOverlappingTiles(your_collection, your_geometry)`
+1. Define the Sentinel-1 Image Collection you want to use, define the geometry and filter the selected Image Collection by date and ROI.
+2. Load the GEE repository using `require('users/danielp/functions:addLIA')`, e.g. `var addLAI = require('users/danielp/functions:addLIA')`
+3. Add input parameters (collection and geometry) and use the function, e.g. `var finalCollection = addLAI.addLAI(your_collection, your_geometry)`
 4. Use the mosaiced Image Collection
 
-Take a look at the example code [here](https://code.earthengine.google.com/eeed2f691e03f7447367777e76b0e847).
+Take a look at the example code [here](https://code.earthengine.google.com/f6eba4163ea5bb915500abbd7cec34fc).
 The source code of the function can be found in the *javascript_codes* folder of this repository.
+
+##### Possible improvements in the future
+  - add option to select different DEMs available in GEE --> currently you can do it changing the source code of the addLIA function
+
 
 ## makeMosaicsFromOverlappingTiles(collection,ROI) function
 This function creates mosaic images from GEE ImageCollection image tiles that overlaps the selected region of interest (ROI) and originates from the same overpass.
