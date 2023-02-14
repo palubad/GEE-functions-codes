@@ -3,7 +3,7 @@ This repository contains Google Earth Engine (GEE) codes and functions that I ha
 
 ## addLAI(collection,geometry) function
 This function adds Local Incidence Angle (LIA) to a selected Sentinel-1 GEE ImageCollection using the [Copernicus DEM](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_DEM_GLO30) for the selected region of interest (geometry) and originates from the same overpass.
-This function was part of the the the article in Remote Sensing: [Paluba et al. (2021): "Land Cover-Specific Local Incidence Angle Correction: A Method for Time-Series Analysis of Forest Ecosystems"](https://www.mdpi.com/2072-4292/13/9/1743/) (doi: 10.3390/rs13091743). The code for the full algorithm developed is available [in this GitHub repository](https://github.com/palubad/LC-SLIAC).
+This function is a part of the paper in Remote Sensing journal: [Paluba et al. (2021): "Land Cover-Specific Local Incidence Angle Correction: A Method for Time-Series Analysis of Forest Ecosystems"](https://www.mdpi.com/2072-4292/13/9/1743/) (doi: 10.3390/rs13091743). The code for the full algorithm developed is available [in this GitHub repository](https://github.com/palubad/LC-SLIAC). Please refer to this paper if using the *addLIA function*.
 
 Input parameters:
   - collection: *Sentinel-1 ImageCollection to use. It is recommended to filter this collection at least by Date and geometry.*
