@@ -1,0 +1,32 @@
+var geometry = 
+    /* color: #d63000 */
+    /* shown: false */
+    /* displayProperties: [
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.Geometry.Polygon(
+        [[[15.79266459322555, 50.38479900990016],
+          [15.79266459322555, 50.02618734014969],
+          [16.20671183443649, 50.02618734014969],
+          [16.20671183443649, 50.38479900990016]]], null, false);
+
+// set start and end date
+var startDate = '2021-03-01',
+    endDate = '2021-10-31';
+
+// filter the S1 data collection
+var S1Collection = ee.ImageCollection('COPERNICUS/S1_GRD')
+                  .filterBounds(geometry)
+                  .filterDate(startDate, endDate);
+
+// call the function 
+var addLIA = require('users/danielp/functions:addLIA');
+
+// apply the function
+var S1withLIA = addLIA.addLIA(S1Collection,geometry);
+print(S1withLIA.first());
+
+Map.addLayer(S1withLIA.select('VH'),{min:-25,max:5},'VH');
+Map.addLayer(S1withLIA.select('LIA'),{min:0,max:60},'LIA');
