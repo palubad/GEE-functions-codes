@@ -9,8 +9,27 @@
 
 var addLIA = function (collection,geometry) {
   // add DEM
-  var CoprenicusDEM = ee.ImageCollection("COPERNICUS/DEM/GLO30").select('DEM').filterBounds(geometry);
+  var CoprenicusDEM = ee.ImageCollection("COPERNICUS/DEM/GLO30")
+            .select('DEM')
+            .filterBounds(geometry);
+
+// Define a function to compute slope and aspect for each image
+var calculateSlopeAspect = function(image) {
+  // Compute slope and aspect
+  var slope = ee.Terrain.slope(image);
+  var aspect = ee.Terrain.aspect(image);
   
+  // Return the image with new bands for slope and aspect
+  return image.rename('DEM').addBands(slope.rename('slope')).addBands(aspect.rename('aspect'));
+};
+
+CoprenicusDEM = ee.Join.saveAll("match").apply(CoprenicusDEM,CoprenicusDEM,ee.Filter.withinDistance({distance:300, leftField:'.geo', rightField: '.geo', maxError:100}));
+
+CoprenicusDEM = ee.ImageCollection(CoprenicusDEM).map(function(im){
+  var extendedIM = ee.ImageCollection(ee.List(im.get("match"))).mosaic().setDefaultProjection(im.projection());
+  return calculateSlopeAspect(extendedIM).clip(im.geometry());
+});
+
   // Create separate ascending and descending collections
   var sentinel1ASCDB = collection
       .filter(ee.Filter.eq('orbitProperties_pass', 'ASCENDING'));
@@ -18,12 +37,8 @@ var addLIA = function (collection,geometry) {
       .filter(ee.Filter.eq('orbitProperties_pass', 'DESCENDING'));
   
   // Calculate aspect and slope from DEM, in radians for further calculations
-  var slope = CoprenicusDEM.map(function (img){
-    return ee.Terrain.slope(img)
-  }).mosaic().multiply(Math.PI / 180);
-  var aspect = CoprenicusDEM.map(function (img){
-    return ee.Terrain.aspect(img)
-  }).mosaic().multiply(Math.PI / 180);
+  var slope = CoprenicusDEM.mosaic().select('slope').multiply(Math.PI / 180);
+  var aspect = CoprenicusDEM.mosaic().select('aspect').multiply(Math.PI / 180);
   
   
   //////////////////Function to CREATE LIA for ASCENDING images//////////////////
