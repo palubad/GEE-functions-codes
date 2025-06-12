@@ -11,7 +11,7 @@ var addLIA = function (collection,geometry) {
   // add DEM
   var CoprenicusDEM = ee.ImageCollection("COPERNICUS/DEM/GLO30")
             .select('DEM')
-            .filterBounds(collection.union().first().geometry());
+            .filterBounds(collection.union(1).first().geometry(1));
 
 // Define a function to compute slope and aspect for each image
 var calculateSlopeAspect = function(image) {
